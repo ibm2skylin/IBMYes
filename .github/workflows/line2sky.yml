@@ -19,23 +19,23 @@ jobs:
         ./IBM_Cloud_CLI/ibmcloud config --check-version=false
     - name: Login IBM Cloud
       env:
-        IBM_ACCOUNT3: ${{ secrets.IBM_ACCOUNT3 }}
-        REGION_NUM3: ${{ secrets.REGION_NUM3 }}
+        IBM_ACCOUNT2: ${{ secrets.IBM_ACCOUNT23 }}
+        REGION_NUM2: ${{ secrets.REGION_NUM2 }}
       run: |
         ./IBM_Cloud_CLI/ibmcloud login <<EOF
-        $IBM_ACCOUNT3
-        $REGION_NUM3
+        $IBM_ACCOUNT2
+        $REGION_NUM2
         no
         EOF
     - name: Target IBM Cloud
       env:
-        RESOURSE_ID3: ${{ secrets.RESOURSE_ID3 }}
+        RESOURSE_ID2: ${{ secrets.RESOURSE_ID2 }}
       run: |
-        ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURSE_ID3"
+        ./IBM_Cloud_CLI/ibmcloud target -g "$RESOURSE_ID2"
         ./IBM_Cloud_CLI/ibmcloud target --cf
         ./IBM_Cloud_CLI/ibmcloud cf install -f -v 6.15.0
     - name: Restart IBM Cloud
       env:
-        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME3 }}
+        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME2 }}
       run: |
-        ./IBM_Cloud_CLI/ibmcloud cf restart "$IBM_APP_NAME3"
+        ./IBM_Cloud_CLI/ibmcloud cf restart "$IBM_APP_NAME2"
